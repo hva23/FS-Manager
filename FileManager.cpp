@@ -8,7 +8,7 @@ bool FileManager::begin(fs::FS &fs)
         return fs.begin();
 }
 
-FileStatus FileManager::create(fs::FS &fs, String directory, String fileName, String contents)
+FileStatus::Value FileManager::create(fs::FS &fs, String directory, String fileName, String contents)
 {
         File newFile;
         String absoluteFilePath = directory + fileName;
@@ -27,7 +27,7 @@ FileStatus FileManager::create(fs::FS &fs, String directory, String fileName, St
         return FileStatus::Success;
 }
 
-FileStatus FileManager::create(fs::FS &fs, String directory, String fileName)
+FileStatus::Value FileManager::create(fs::FS &fs, String directory, String fileName)
 {
         File newFile;
         String absoluteFilePath = directory + fileName;
@@ -43,7 +43,7 @@ FileStatus FileManager::create(fs::FS &fs, String directory, String fileName)
         return FileStatus::Success;
 }
 
-FileStatus FileManager::write(fs::FS &fs, String directory, String fileName, String contents)
+FileStatus::Value FileManager::write(fs::FS &fs, String directory, String fileName, String contents)
 {
         File file;
         String absoluteFilePath = directory + fileName;
@@ -57,7 +57,7 @@ FileStatus FileManager::write(fs::FS &fs, String directory, String fileName, Str
         return FileStatus::Success;
 }
 
-FileStatus FileManager::write(fs::FS &fs, String directory, String fileName, uint8_t *contents, size_t fileSize)
+FileStatus::Value FileManager::write(fs::FS &fs, String directory, String fileName, uint8_t *contents, size_t fileSize)
 {
         File file;
         String absoluteFilePath = directory + fileName;
@@ -71,7 +71,7 @@ FileStatus FileManager::write(fs::FS &fs, String directory, String fileName, uin
         return FileStatus::Success;
 }
 
-FileStatus FileManager::append(fs::FS &fs, String directory, String fileName, String contents)
+FileStatus::Value FileManager::append(fs::FS &fs, String directory, String fileName, String contents)
 {
         File file = fs.open(directory + fileName, "a");
         file.print(contents);
@@ -79,7 +79,7 @@ FileStatus FileManager::append(fs::FS &fs, String directory, String fileName, St
         return FileStatus::Success;
 }
 
-FileStatus FileManager::append(fs::FS &fs, String directory, String fileName, uint8_t *contents, size_t fileSize)
+FileStatus::Value FileManager::append(fs::FS &fs, String directory, String fileName, uint8_t *contents, size_t fileSize)
 {
         File file = fs.open(directory + fileName, "a");
         file.write(contents, fileSize);
@@ -87,7 +87,7 @@ FileStatus FileManager::append(fs::FS &fs, String directory, String fileName, ui
         return FileStatus::Success;
 }
 
-FileStatus FileManager::read(fs::FS &fs, String directory, String fileName, String &contents)
+FileStatus::Value FileManager::read(fs::FS &fs, String directory, String fileName, String &contents)
 {
         File file;
         String absoluteFilePath = directory + fileName;
@@ -108,7 +108,7 @@ FileStatus FileManager::read(fs::FS &fs, String directory, String fileName, Stri
         return FileStatus::Success;
 }
 
-FileStatus FileManager::deleteFile(fs::FS &fs, String directory, String fileName)
+FileStatus::Value FileManager::deleteFile(fs::FS &fs, String directory, String fileName)
 {
         File file;
         String absoluteFilePath = directory + fileName;
@@ -117,13 +117,13 @@ FileStatus FileManager::deleteFile(fs::FS &fs, String directory, String fileName
         return fs.remove(absoluteFilePath) ? FileStatus::Success : FileStatus::Failed;
 }
 
-FileStatus FileManager::isPresent(fs::FS &fs, String directory, String fileName)
+FileStatus::Value FileManager::isPresent(fs::FS &fs, String directory, String fileName)
 {
         File file;
         String absoluteFilePath = directory + fileName;
         if (fs.exists(absoluteFilePath))
-                return AlreadyExists;
-        return DoesNotExist;
+                return FileStatus::AlreadyExists;
+        return FileStatus::DoesNotExist;
 }
 
 File FileManager::getFile(fs::FS &fs, String directory, String fileName)
@@ -132,7 +132,7 @@ File FileManager::getFile(fs::FS &fs, String directory, String fileName)
         return fs.open(absoluteFilePath, "r+"); // Read and write mode
 }
 
-FileStatus FileManager::clear(fs::FS &fs, String directory, String fileName)
+FileStatus::Value FileManager::clear(fs::FS &fs, String directory, String fileName)
 {
         File file;
         String absoluteFilePath = directory + fileName;
