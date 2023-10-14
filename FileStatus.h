@@ -1,3 +1,7 @@
+#ifndef FILE_STATUS_H
+#define FILE_STATUS_H
+#endif
+
 class FileStatus
 {
 public:
@@ -9,10 +13,4 @@ public:
                 CanNotOpen,
                 Failed
         };
-        String stringValueOf[5]{
-            "Success",
-            "DoesNotExist",
-            "AlreadyExists",
-            "CanNotOpen",
-            "Failed"};
 };
