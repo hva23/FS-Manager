@@ -74,6 +74,8 @@ FileStatus::Value FileManager::write(fs::FS &fs, String directory, String fileNa
 FileStatus::Value FileManager::append(fs::FS &fs, String directory, String fileName, String contents)
 {
         File file = fs.open(directory + fileName, "a");
+        if (!file)
+                return FileStatus::CanNotOpen;
         file.print(contents);
         file.close();
         return FileStatus::Success;
@@ -82,6 +84,8 @@ FileStatus::Value FileManager::append(fs::FS &fs, String directory, String fileN
 FileStatus::Value FileManager::append(fs::FS &fs, String directory, String fileName, uint8_t *contents, size_t fileSize)
 {
         File file = fs.open(directory + fileName, "a");
+        if (!file)
+                return FileStatus::CanNotOpen;
         file.write(contents, fileSize);
         file.close();
         return FileStatus::Success;
@@ -137,7 +141,7 @@ FileStatus::Value FileManager::clear(fs::FS &fs, String directory, String fileNa
         File file;
         String absoluteFilePath = directory + fileName;
         file = fs.open(absoluteFilePath, "w");
-        if (!file)
+        if (file)
         {
                 file.print("");
                 file.close();
