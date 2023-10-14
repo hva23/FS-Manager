@@ -3,11 +3,17 @@
  * @version 1.0
  * @see https://arduino-esp8266.readthedocs.io/en/latest/filesystem.html
  */
+#ifndef FILEMANAGER_H
+#define FILEMANAGER_H
+#endif
+
+#ifndef FILE_STATUS_H
+#include <FileStatus.h>
+#endif
 
 #include <FS.h>
 #include <LittleFS.h>
 #include <Arduino.h>
-#include <FileStatus.h>
 
 class FileManager
 {
