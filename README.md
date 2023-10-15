@@ -33,7 +33,7 @@ Also it will be available in PlatformIO libraries as soon as possible to install
 bool begin(fs::FS &fs);
 ```
 #### CRUD Operations
-**Create:**<br>
+#### Create:
 ```fs``` -File System Type<br>
 ```directory``` -Where file will be created<br>
 ```fileName``` -File name<br>
@@ -42,8 +42,8 @@ bool begin(fs::FS &fs);
 /* Create */
 FileStatus::Value create(fs::FS &fs, String directory, String fileName, String contents);
 ```
-<br>
-**Read:**<br>
+
+#### Read:
 ```fs``` -File System Type<br>
 ```directory``` -Where file will be read<br>
 ```fileName``` -File name<br>
@@ -52,8 +52,8 @@ FileStatus::Value create(fs::FS &fs, String directory, String fileName, String c
 /* Read */
 FileStatus::Value read(fs::FS &fs, String directory, String fileName, String &contents);
 ```
-<br>
-**Update:**<br>
+
+#### Update:
 ```fs``` -File System Type<br>
 ```directory``` -Where file will be updated<br>
 ```fileName``` -File name<br>
@@ -62,8 +62,8 @@ FileStatus::Value read(fs::FS &fs, String directory, String fileName, String &co
 /* Update */
 FileStatus::Value write(fs::FS &fs, String directory, String fileName, String contents);
 ```
-<br>
-```fs``` -File System Type<br>
+
+<br>```fs``` -File System Type<br>
 ```directory``` -Where file will be updated<br>
 ```fileName``` -File name<br>
 ```contents``` -An array of ```uint8_t``` data type to write and replace the previous contents<br>
@@ -72,8 +72,8 @@ FileStatus::Value write(fs::FS &fs, String directory, String fileName, String co
 /* Update */
 FileStatus::Value write(fs::FS &fs, String directory, String fileName, uint8_t *contents, size_t fileSize);
 ```
-<br>
-```fs``` -File System Type<br>
+
+<br>```fs``` -File System Type<br>
 ```directory``` -Where file will be updated<br>
 ```fileName``` -File name<br>
 ```contents``` -The contents to add to the previous contents<br>
@@ -81,8 +81,8 @@ FileStatus::Value write(fs::FS &fs, String directory, String fileName, uint8_t *
 /* Update */
 FileStatus::Value append(fs::FS &fs, String directory, String fileName, String contents);
 ```
-<br>
-```fs``` -File System Type<br>
+
+<br>```fs``` -File System Type<br>
 ```directory``` -Where file will be updated<br>
 ```fileName``` -File name<br>
 ```contents``` -An array of ```uint8_t``` data type to write and add to the previous contents<br>
@@ -91,8 +91,8 @@ FileStatus::Value append(fs::FS &fs, String directory, String fileName, String c
 /* Update */
 FileStatus::Value append(fs::FS &fs, String directory, String fileName, uint8_t *contents, size_t fileSize);
 ```
-<br>
-**Delete:**<br>
+
+#### Delete:
 ```fs``` -File System Type<br>
 ```directory``` -Where file will be deleted<br>
 ```fileName``` -File name<br>
@@ -100,8 +100,8 @@ FileStatus::Value append(fs::FS &fs, String directory, String fileName, uint8_t 
 /* Delete */
 FileStatus::Value deleteFile(fs::FS &fs, String directory, String fileName);
 ```
-<br>
-## Examples<br>
+
+## Examples
 **CRUD Example**
 ```c++
 const String dir = "Directory1/Subdirectory1/";
