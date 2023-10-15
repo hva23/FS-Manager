@@ -1,0 +1,18 @@
+{
+        "name": "FS-Manager",
+        "version": "1.0.0",
+        "description": "The FS-Manager is a high-level library that provides an easy way to manage files and directories.",
+        "keywords": "LittleFS, SPIFFS",
+        "repository": {
+                "type": "git",
+                "url": "https://github.com/hva23/FS-Manager.git"
+        },
+        "authors": [
+                {
+                        "name": "Hossein Vahabi",
+                        "email": "haskihossein@gmail.com"
+                }
+        ],
+        "frameworks": "*",
+        "platforms": "*"
+}
