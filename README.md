@@ -42,7 +42,7 @@ bool begin(fs::FS &fs);
 /* Create */
 FileStatus::Value create(fs::FS &fs, String directory, String fileName, String contents);
 ```
-
+<br>
 **Read:**<br>
 ```fs``` -File System Type<br>
 ```directory``` -Where file will be read<br>
@@ -52,7 +52,7 @@ FileStatus::Value create(fs::FS &fs, String directory, String fileName, String c
 /* Read */
 FileStatus::Value read(fs::FS &fs, String directory, String fileName, String &contents);
 ```
-
+<br>
 **Update:**<br>
 ```fs``` -File System Type<br>
 ```directory``` -Where file will be updated<br>
@@ -62,7 +62,7 @@ FileStatus::Value read(fs::FS &fs, String directory, String fileName, String &co
 /* Update */
 FileStatus::Value write(fs::FS &fs, String directory, String fileName, String contents);
 ```
-
+<br>
 ```fs``` -File System Type<br>
 ```directory``` -Where file will be updated<br>
 ```fileName``` -File name<br>
@@ -72,7 +72,7 @@ FileStatus::Value write(fs::FS &fs, String directory, String fileName, String co
 /* Update */
 FileStatus::Value write(fs::FS &fs, String directory, String fileName, uint8_t *contents, size_t fileSize);
 ```
-
+<br>
 ```fs``` -File System Type<br>
 ```directory``` -Where file will be updated<br>
 ```fileName``` -File name<br>
@@ -81,7 +81,7 @@ FileStatus::Value write(fs::FS &fs, String directory, String fileName, uint8_t *
 /* Update */
 FileStatus::Value append(fs::FS &fs, String directory, String fileName, String contents);
 ```
-
+<br>
 ```fs``` -File System Type<br>
 ```directory``` -Where file will be updated<br>
 ```fileName``` -File name<br>
@@ -91,7 +91,7 @@ FileStatus::Value append(fs::FS &fs, String directory, String fileName, String c
 /* Update */
 FileStatus::Value append(fs::FS &fs, String directory, String fileName, uint8_t *contents, size_t fileSize);
 ```
-
+<br>
 **Delete:**<br>
 ```fs``` -File System Type<br>
 ```directory``` -Where file will be deleted<br>
@@ -100,7 +100,7 @@ FileStatus::Value append(fs::FS &fs, String directory, String fileName, uint8_t 
 /* Delete */
 FileStatus::Value deleteFile(fs::FS &fs, String directory, String fileName);
 ```
-
+<br>
 ## Examples<br>
 **CRUD Example**
 ```c++
