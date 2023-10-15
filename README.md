@@ -18,7 +18,7 @@ With this library, you can perform various file operations such as creating, ope
 ## Installation
 
 ### Arduino
-1. Download the .zip file.
+1. Download the .zip file from tag section.
 2. In the Arduino IDE, open the **"Sketch"** menu.
 3. Click on **"Include Library"**.
 4. Select **"Add .ZIP Library..."** from the drop-down menu that appears.
