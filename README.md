@@ -23,82 +23,80 @@ With this library, you can perform various file operations such as creating, ope
 3. Click on **"Include Library"**.
 4. Select **"Add .ZIP Library..."** from the drop-down menu that appears.
 ### PlatformIO
-Add https://github.com/hva23/FS-Manager.git to **lib_deps** tag in **"platformio.ini"** file.<br>
-Also it will be available in PlatformIO libraries as soon as possible to install it easily
+Add https://github.com/hva23/FS-Manager.git to ```lib_deps``` tag in ```platformio.ini``` file.<br>
+Or add ```hva23/FS-Manager@^1.0.0``` to to ```lib_deps``` tag in ```platformio.ini``` file.<br>
 
 ## Usage
 ### Basic operations
+#### Define file system kind in constructor
+```c++
+FileManager fileManager(&LittleFS);
+// or FileManager fileManager(&SPIFFS);
+```
 #### Starting the file system
 ```c++
-bool begin(fs::FS &fs);
+bool begin();
 ```
 #### CRUD Operations
 #### Create:
-```fs``` -File System Type<br>
 ```directory``` -Where file will be created<br>
 ```fileName``` -File name<br>
 ```contents``` -Init content to write to file, could be null<br>
 ```c++
 /* Create */
-FileStatus::Value create(fs::FS &fs, String directory, String fileName, String contents);
+FileStatus::Value create(String directory, String fileName, String contents);
 ```
 
 #### Read:
-```fs``` -File System Type<br>
 ```directory``` -Where file will be read<br>
 ```fileName``` -File name<br>
 ```contents``` -The contents of the file will be stored in it<br>
 ```c++
 /* Read */
-FileStatus::Value read(fs::FS &fs, String directory, String fileName, String &contents);
+FileStatus::Value read(String directory, String fileName, String &contents);
 ```
 
 #### Update:
-```fs``` -File System Type<br>
 ```directory``` -Where file will be updated<br>
 ```fileName``` -File name<br>
 ```contents``` -The contents to replace<br>
 ```
 /* Update */
-FileStatus::Value write(fs::FS &fs, String directory, String fileName, String contents);
+FileStatus::Value write(String directory, String fileName, String contents);
 ```
 
-<br>```fs``` -File System Type<br>
-```directory``` -Where file will be updated<br>
+<br>```directory``` -Where file will be updated<br>
 ```fileName``` -File name<br>
 ```contents``` -An array of ```uint8_t``` data type to write and replace the previous contents<br>
 ```fileSize``` -Size of ```uint8_t``` array<br>
 ```c++
 /* Update */
-FileStatus::Value write(fs::FS &fs, String directory, String fileName, uint8_t *contents, size_t fileSize);
+FileStatus::Value write(String directory, String fileName, uint8_t *contents, size_t fileSize);
 ```
 
-<br>```fs``` -File System Type<br>
-```directory``` -Where file will be updated<br>
+<br>```directory``` -Where file will be updated<br>
 ```fileName``` -File name<br>
 ```contents``` -The contents to add to the previous contents<br>
 ```c++
 /* Update */
-FileStatus::Value append(fs::FS &fs, String directory, String fileName, String contents);
+FileStatus::Value append(String directory, String fileName, String contents);
 ```
 
-<br>```fs``` -File System Type<br>
-```directory``` -Where file will be updated<br>
+<br>```directory``` -Where file will be updated<br>
 ```fileName``` -File name<br>
 ```contents``` -An array of ```uint8_t``` data type to write and add to the previous contents<br>
 ```fileSize``` -Size of ```uint8_t``` array<br>
 ```c++
 /* Update */
-FileStatus::Value append(fs::FS &fs, String directory, String fileName, uint8_t *contents, size_t fileSize);
+FileStatus::Value append(String directory, String fileName, uint8_t *contents, size_t fileSize);
 ```
 
 #### Delete:
-```fs``` -File System Type<br>
 ```directory``` -Where file will be deleted<br>
 ```fileName``` -File name<br>
 ```c++
 /* Delete */
-FileStatus::Value deleteFile(fs::FS &fs, String directory, String fileName);
+FileStatus::Value deleteFile(String directory, String fileName);
 ```
 
 ## Examples
@@ -107,25 +105,25 @@ FileStatus::Value deleteFile(fs::FS &fs, String directory, String fileName);
 const String dir = "Directory1/Subdirectory1/";
 const String fileName = "file.txt";
 
-FileManager fileManager;
+FileManager fileManager(&LittleFS);
 FileStatus::Value fileStatus;
 
 /* LittleFS or SPIFFS */
-fileManager.begin(LittleFS);
+fileManager.begin();
 
-fileStatus = fileManager.create(LittleFS, dir, fileName);
+fileStatus = fileManager.create(dir, fileName);
 if (fileStatus != FileStatus::Success)
         Serial.println("File creation failed");
 else
 {
   String contentsToWrite = "Hello world!";
-  fileStatus = fileManager.write(LittleFS, dir, fileName, contentsToWrite);
+  fileStatus = fileManager.write(dir, fileName, contentsToWrite);
   if(fileStatus == FileStatus::Failed)
           Serial.println("File write failed");
   else
   {
     String fileContents = "";
-    fileStatus = fileManager.read(LittleFS, dir, fileName, fileContents);
+    fileStatus = fileManager.read(dir, fileName, fileContents);
     if(fileStatus == FileStatus::Success)
     {
       Serial.println("File reading was successful!");
