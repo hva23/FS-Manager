@@ -15,6 +15,10 @@ The FS-Manager is a high-level file system interface designed specifically for A
 
 With this library, you can perform various file operations such as creating, opening, reading, writing, and deleting files. It abstracts the low-level complexities of interacting with the underlying file system, allowing you to focus on implementing your project's logic without worrying about the intricacies of file management.
 
+### Better use LittleFS instead of SPIFFS
+This library is specifically designed and tested for use with LittleFS. Due to the deprecation of SPIFFS and its potential removal in future releases, we strongly recommend using LittleFS as the underlying file system with this library.
+Using SPIFFS instead may result in compatibility issues and bugs. Therefore, it is highly advised to utilize LittleFS to ensure optimal performance and stability.
+
 ## Installation
 
 ### Arduino
@@ -24,7 +28,7 @@ With this library, you can perform various file operations such as creating, ope
 4. Select **"Add .ZIP Library..."** from the drop-down menu that appears.
 ### PlatformIO
 Add https://github.com/hva23/FS-Manager.git to ```lib_deps``` tag in ```platformio.ini``` file.<br>
-Or add ```hva23/FS-Manager@^1.0.0``` to to ```lib_deps``` tag in ```platformio.ini``` file.<br>
+Or add ```hva23/FS-Manager@^(desired_version)``` to to ```lib_deps``` tag in ```platformio.ini``` file.<br>
 
 ## Usage
 ### Basic operations
