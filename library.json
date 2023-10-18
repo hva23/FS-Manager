@@ -1,6 +1,6 @@
 {
         "name": "FS-Manager",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "description": "The FS-Manager is a high-level library that provides an easy way to manage files and directories.",
         "keywords": "LittleFS, SPIFFS",
         "repository": {
