@@ -7,30 +7,49 @@
 #define FILEMANAGER_H
 #endif
 
+#ifndef Arduino_h
+#include <Arduino.h>
+#endif
+
 #ifndef FILE_STATUS_H
 #include <FileStatus.h>
 #endif
 
+#ifndef FS_H
 #include <FS.h>
+#endif
+
+#ifdef LITTLE_FS
+#ifndef __LITTLEFS_H
 #include <LittleFS.h>
-#include <Arduino.h>
+#endif
+#endif
 
 class FileManager
 {
 private:
+        fs::FS *fileSystem = nullptr;
+
 public:
-        FileManager();
+        FileManager(fs::FS *fs);
         ~FileManager();
-        bool begin(fs::FS &fs);
-        FileStatus::Value create(fs::FS &fs, String directory, String fileName, String contents);
-        FileStatus::Value create(fs::FS &fs, String directory, String fileName);
-        FileStatus::Value write(fs::FS &fs, String directory, String fileName, String contents);
-        FileStatus::Value write(fs::FS &fs, String directory, String fileName, uint8_t *contents, size_t fileSize);
-        FileStatus::Value append(fs::FS &fs, String directory, String fileName, String contents);
-        FileStatus::Value append(fs::FS &fs, String directory, String fileName, uint8_t *contents, size_t fileSize);
-        FileStatus::Value read(fs::FS &fs, String directory, String fileName, String &contents);
-        FileStatus::Value deleteFile(fs::FS &fs, String directory, String fileName);
-        FileStatus::Value isPresent(fs::FS &fs, String directory, String fileName);
-        File getFile(fs::FS &fs, String directory, String fileName);
-        FileStatus::Value clear(fs::FS &fs, String directory, String fileName);
+        bool begin();
+        void end();
+        bool format();
+        /* Create */
+        FileStatus::Value create(String directory, String fileName, String contents);
+        FileStatus::Value create(String directory, String fileName);
+        /* Update */
+        FileStatus::Value write(String directory, String fileName, String contents);
+        FileStatus::Value write(String directory, String fileName, uint8_t *contents, size_t fileSize);
+        FileStatus::Value append(String directory, String fileName, String contents);
+        FileStatus::Value append(String directory, String fileName, uint8_t *contents, size_t fileSize);
+        FileStatus::Value clear(String directory, String fileName);
+        /* Read */
+        FileStatus::Value read(String directory, String fileName, String &contents);
+        /* Delete */
+        FileStatus::Value deleteFile(String directory, String fileName);
+        /* Other Methods */
+        FileStatus::Value isPresent(String directory, String fileName);
+        File getFile(String directory, String fileName);
 };
