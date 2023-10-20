@@ -64,7 +64,7 @@ FileStatus::Value read(String directory, String fileName, String &contents);
 ```directory``` -Where file will be updated<br>
 ```fileName``` -File name<br>
 ```contents``` -The contents to **replace**<br>
-```
+```c++
 /* Update */
 FileStatus::Value write(String directory, String fileName, String contents);
 ```
