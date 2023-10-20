@@ -63,7 +63,7 @@ FileStatus::Value read(String directory, String fileName, String &contents);
 #### Update:
 ```directory``` -Where file will be updated<br>
 ```fileName``` -File name<br>
-```contents``` -The contents to replace<br>
+```contents``` -The contents to **replace**<br>
 ```
 /* Update */
 FileStatus::Value write(String directory, String fileName, String contents);
@@ -71,7 +71,7 @@ FileStatus::Value write(String directory, String fileName, String contents);
 
 <br>```directory``` -Where file will be updated<br>
 ```fileName``` -File name<br>
-```contents``` -An array of ```uint8_t``` data type to write and replace the previous contents<br>
+```contents``` -An array of ```uint8_t``` data type to write and **replace** the previous contents<br>
 ```fileSize``` -Size of ```uint8_t``` array<br>
 ```c++
 /* Update */
@@ -80,7 +80,7 @@ FileStatus::Value write(String directory, String fileName, uint8_t *contents, si
 
 <br>```directory``` -Where file will be updated<br>
 ```fileName``` -File name<br>
-```contents``` -The contents to add to the previous contents<br>
+```contents``` -The contents to **add** to the previous contents<br>
 ```c++
 /* Update */
 FileStatus::Value append(String directory, String fileName, String contents);
@@ -88,7 +88,7 @@ FileStatus::Value append(String directory, String fileName, String contents);
 
 <br>```directory``` -Where file will be updated<br>
 ```fileName``` -File name<br>
-```contents``` -An array of ```uint8_t``` data type to write and add to the previous contents<br>
+```contents``` -An array of ```uint8_t``` data type to write and **add** to the previous contents<br>
 ```fileSize``` -Size of ```uint8_t``` array<br>
 ```c++
 /* Update */
